@@ -9,6 +9,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -31,8 +32,40 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
+fun TaskManager() {
+    val image = painterResource(R.drawable.ic_task_completed)
+
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center
+    ) {
+        Image(
+            painter = image,
+            contentDescription = null,
+            modifier = Modifier.align(Alignment.CenterHorizontally)
+        )
+
+        Text(
+            text = stringResource(R.string.task_completed),
+            fontSize = 24.sp,
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .padding(0.dp, 24.dp, 0.dp, 8.dp)
+        )
+
+        Text(
+            text = stringResource(R.string.nice_work),
+            fontSize = 16.sp,
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+        )
+    }
+}
+
+@Composable
 fun ComposeTutorial() {
     val image = painterResource(R.drawable.bg_compose_background)
+
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -67,6 +100,6 @@ fun ComposeTutorial() {
 @Composable
 fun DefaultPreview() {
     Composables_practice_problemsTheme {
-        ComposeTutorial()
+        TaskManager()
     }
 }
